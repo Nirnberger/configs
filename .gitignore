@@ -2,8 +2,12 @@
 
 !.gitignore
 
+!alacritty/
 !alacritty/**
 
+!neovim/
 !neovim/**
 
+!tmux/
 !tmux/**
+tmux/pluginsa/
