@@ -1,0 +1,9 @@
+*
+
+!.gitignore
+
+!alacritty/**
+
+!neovim/**
+
+!tmux/**
