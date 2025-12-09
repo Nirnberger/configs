@@ -5,8 +5,8 @@
 !alacritty/
 !alacritty/**
 
-!neovim/
-!neovim/**
+!nvim/
+!nvim/**
 
 !tmux/
 !tmux/**
