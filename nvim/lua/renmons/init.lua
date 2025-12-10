@@ -22,3 +22,4 @@ vim.opt.breakindent = true    -- keep indent on wrapped lines
 require("renmons.lazy_init")
 require("renmons.set")
 require("renmons.remap")
+require("renmons.autocommands")

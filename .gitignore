@@ -10,4 +10,4 @@
 
 !tmux/
 !tmux/**
-tmux/pluginsa/
+tmux/plugins/
