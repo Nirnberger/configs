@@ -14,6 +14,12 @@ brew "node"
 brew "python"
 # nvim-treesitter (main branch) compiles parsers with the tree-sitter CLI
 brew "tree-sitter-cli"
+# Java: latest JDK runs jdtls (needs 25+), JDK 21 for projects (zshrc sets JAVA_HOME to it)
+brew "openjdk"
+brew "openjdk@21"
+brew "maven"
+brew "gradle"
+
 # nvim: <leader>gg
 brew "lazygit"
 

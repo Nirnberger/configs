@@ -29,7 +29,10 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		dependencies = { "mason-org/mason.nvim" },
 		opts = {
-			ensure_installed = { "stylua", "shfmt", "ruff", "prettierd" },
+			ensure_installed = {
+				"stylua", "shfmt", "ruff", "prettierd",
+				"jdtls", "java-debug-adapter", "java-test", -- java.lua (nvim-jdtls)
+			},
 			run_on_start = true,
 		},
 	},

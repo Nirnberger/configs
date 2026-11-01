@@ -11,6 +11,9 @@ return {
 
         map("n", "]h", function() gs.nav_hunk("next") end, "Next hunk")
         map("n", "[h", function() gs.nav_hunk("prev") end, "Previous hunk")
+        -- same without [ ] (Option+5/6 on a German layout)
+        map("n", "<leader>gj", function() gs.nav_hunk("next") end, "Next hunk")
+        map("n", "<leader>gk", function() gs.nav_hunk("prev") end, "Previous hunk")
 
         map("n", "<leader>gs", gs.stage_hunk, "Stage/unstage hunk")
         map("n", "<leader>gr", gs.reset_hunk, "Reset hunk")

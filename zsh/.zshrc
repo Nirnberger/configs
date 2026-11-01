@@ -28,6 +28,12 @@ path=(
 
 export PATH
 
+# Java: native (arm64) JDK 21 from brew; the one in ~/Library/Java is an x86 build
+if [ -d /opt/homebrew/opt/openjdk@21 ]; then
+  export JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
+  path=("$JAVA_HOME/bin" $path)
+fi
+
 plugins=(
   git
 )
