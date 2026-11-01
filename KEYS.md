@@ -149,6 +149,7 @@ Prefix is `Ctrl Space`: press it, let go, then the key.
 | `prefix s` | Move pane to its own window |
 | `prefix f` | **Project switcher**: running sessions + your projects. Opens nvim + a shell window |
 | `prefix F` | Add the current folder (its git repo) as a project |
+| `prefix D` | Dev boxes: go to the `boxes` session and pick a box; each box gets its own window |
 | `prefix w` | All sessions and windows as a tree, with preview |
 | `prefix G` | lazygit in a popup (current folder) |
 | `prefix p` | Scratch shell in a popup, `exit` closes it |
