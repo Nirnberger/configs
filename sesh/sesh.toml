@@ -11,3 +11,9 @@ windows = ["shell"]
 
 [[window]]
 name = "shell"
+
+[[session]]
+name = "uni"
+path = "~/Documents/uni"
+startup_command = "nvim"
+windows = ["shell"]
