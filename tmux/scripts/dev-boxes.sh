@@ -5,7 +5,9 @@
 # $1 = the tmux client that pressed the key (popups and messages need it).
 client=$1
 dev="$HOME/bin/dev"
-host="${DEV_HOST:-homeserver}"
+# tmux runs this with /bin/sh's environment, which lacks DEV_HOST from ~/.zshenv: ask zsh
+host="${DEV_HOST:-$(zsh -c 'print -r -- $DEV_HOST' 2>/dev/null)}"
+host="${host:-homeserver}"
 
 say() { tmux display-message -c "$client" -d 6000 "$1"; }
 
@@ -14,10 +16,12 @@ if [ ! -x "$dev" ]; then
   exit 0
 fi
 
-# same shared connection as dev, so this is instant once dev has connected
-if ! ssh -o BatchMode=yes -o ConnectTimeout=3 -o ControlMaster=auto \
-  -o "ControlPath=$HOME/.ssh/cm-dev-%C" -o ControlPersist=10m "$host" true 2>/dev/null; then
-  say "$host not reachable. Tailscale on? (ssh $host must work)"
+# Only checks that the server's ssh port answers (no login, so no key or passphrase involved);
+# hostname and port come from ~/.ssh/config
+addr=$(ssh -G "$host" 2>/dev/null | awk '/^hostname /{print $2}')
+port=$(ssh -G "$host" 2>/dev/null | awk '/^port /{print $2}')
+if ! nc -z -G 3 "$addr" "${port:-22}" >/dev/null 2>&1; then
+  say "$host ($addr) not reachable. Tailscale on?"
   exit 0
 fi
 
