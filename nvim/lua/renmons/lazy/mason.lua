@@ -32,6 +32,7 @@ return {
 			ensure_installed = {
 				"stylua", "shfmt", "ruff", "prettierd",
 				"jdtls", "java-debug-adapter", "java-test", -- java.lua (nvim-jdtls)
+				"js-debug-adapter", "debugpy", "codelldb", -- dap.lua
 			},
 			run_on_start = true,
 		},

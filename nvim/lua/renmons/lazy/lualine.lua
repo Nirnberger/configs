@@ -21,6 +21,16 @@ return {
 			return " " .. table.concat(names, ", ")
 		end
 
+		-- Debug session state, e.g. "Stopped at line 12" (only while debugging)
+		local dap_status = {
+			function()
+				return " " .. require("dap").status()
+			end,
+			cond = function()
+				return package.loaded["dap"] ~= nil and require("dap").status() ~= ""
+			end,
+		}
+
 		return {
 			options = {
 				theme = theme,
@@ -32,7 +42,7 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
 				lualine_c = { { "filename", path = 1 } }, -- path relative to project
-				lualine_x = { lsp_clients, "filetype" },
+				lualine_x = { dap_status, lsp_clients, "filetype" },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},

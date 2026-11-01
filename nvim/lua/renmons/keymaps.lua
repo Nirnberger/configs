@@ -85,6 +85,10 @@ map("n", "<leader>bd", function()
 	pcall(vim.cmd, "bdelete! " .. buf)
 end, { desc = "Delete buffer" })
 
+-- Diagnostics: next / previous without [d ]d (problem lists: lazy/trouble.lua)
+map("n", "<leader>xj", function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Next diagnostic" })
+map("n", "<leader>xk", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Previous diagnostic" })
+
 -- Search highlight
 map("n", "<leader>nh", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
 
