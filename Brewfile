@@ -31,6 +31,9 @@ brew "granted"
 # vimtex: PDF viewer. LaTeX itself is big, install when needed: brew install --cask mactex-no-gui
 cask "skim"
 
+# tmux: <prefix> f project switcher
+brew "sesh"
+
 # zsh
 brew "fzf"
 brew "zoxide"

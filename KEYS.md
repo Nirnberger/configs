@@ -147,11 +147,33 @@ Prefix is `Ctrl Space`: press it, let go, then the key.
 | `prefix H/J/K/L` | Resize pane (hold and repeat) |
 | `prefix z` | Zoom pane to full size and back |
 | `prefix s` | Move pane to its own window |
+| `prefix f` | **Project switcher**: pick a project, jumps to its session (creates it if new) |
+| `prefix w` | All sessions and windows as a tree, with preview |
+| `prefix G` | lazygit in a popup (current folder) |
+| `prefix p` | Scratch shell in a popup, `exit` closes it |
+| `prefix Space` | Pick a hash / URL / path / ARN from the screen: `Enter` copies, `Tab` types it |
 | `prefix d` | Detach (session keeps running, `tmux a` to return) |
 | `prefix r` | Reload `tmux.conf` |
 | `prefix I` / `U` | Install / update plugins |
 | `prefix Ctrl s` / `Ctrl r` | Save / restore sessions (also automatic every 15 min) |
 | Mouse wheel | Scroll back (enters copy mode, `q` leaves) |
+
+### Copy mode
+
+Works on one pane only, so a copy never picks up the pane next to it. Everything copied
+lands in the macOS clipboard (`⌘V` anywhere).
+
+| Key | What |
+| --- | --- |
+| `prefix v` | Enter copy mode (`q` leaves) |
+| `h j k l`, `w b`, `/` `?` | Move / search like in vim |
+| `v` / `V` / `Ctrl v` | Select characters / whole lines / a block |
+| `y` or `Enter` | Copy and leave |
+| Mouse drag | Select inside the pane, copies on release |
+| Double / triple click | Copy word / line |
+
+Holding `Shift` while dragging bypasses tmux and lets Alacritty select across the whole window,
+panes included. Leave it out to stay inside the pane.
 
 ## Shell (zsh)
 
