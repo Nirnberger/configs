@@ -133,6 +133,18 @@ Vitest, Jest, pytest. Java uses `<leader>jt` / `jT`.
 | `,ll` / `,lv` | VimTeX: compile / show PDF in Skim |
 | `<leader>v>` / `v<` | Next / previous LaTeX warning |
 
+### Sessions (`<leader>q`)
+
+nvim saves the open files and splits per folder (and git branch) when it quits. `nvim` without a
+file reopens them; `nvim file` starts fresh with just that file.
+
+| Key | What |
+| --- | --- |
+| `<leader>qs` | Restore this folder's session |
+| `<leader>qS` | Pick any saved session |
+| `<leader>ql` | Restore the last session (any folder) |
+| `<leader>qd` | Don't save this time (e.g. before quitting a messy layout) |
+
 ## tmux
 
 Prefix is `Ctrl Space`: press it, let go, then the key.
