@@ -1,18 +1,35 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
+
   opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
+    preset = "modern",
+
+    keys = {
+      scroll_down = "<c-j>",
+      scroll_up = "<c-k>",
+    },
+
+    spec = {
+      { "<leader>b", group = "buffers" },
+      { "<leader>c", group = "code" },
+      { "<leader>f", group = "find" },
+      { "<leader>n", group = "notes / tree / search" },
+      { "<leader>s", group = "splits" },
+      { "<leader>t", group = "tabs / today" },
+      { "<leader>u", group = "ui toggles" },
+      { "<leader>v", group = "vimtex" },
+      { "<leader>z", group = "spelling" },
+    },
   },
+
   keys = {
     {
       "<leader>?",
       function()
         require("which-key").show({ global = false })
       end,
-      desc = "Buffer Local Keymaps (which-key)",
+      desc = "Show buffer-local keymaps",
     },
   },
 }

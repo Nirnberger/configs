@@ -1,26 +1,41 @@
 return {
-  'nvim-telescope/telescope.nvim',
-  tag = 'v0.2.0',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  defaults = {
-    layout_config = {
-      vertical = { width = 0.5 }
-      -- other layout configuration here
-    },
-    -- other defaults configuration here
+  "nvim-telescope/telescope.nvim",
+  tag = "v0.2.0",
+  event = "VeryLazy",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope-ui-select.nvim",
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
-  opts = {
-    defaults = {
-      layout_strategy = "horizontal",
-      layout_config = { prompt_position = "top" },
-      sorting_strategy = "ascending",
-      winblend = 0,
-      mappings = {
-        i = {
-          ["<C-j>"] = "move_selection_next",
-          ["<C-k>"] = "move_selection_previous",
+  opts = function()
+    local themes = require("telescope.themes")
+    return {
+      defaults = {
+        layout_strategy = "horizontal",
+        layout_config = { prompt_position = "top" },
+        sorting_strategy = "ascending",
+        winblend = 0,
+        mappings = {
+          i = {
+            ["<C-j>"] = "move_selection_next",
+            ["<C-k>"] = "move_selection_previous",
+          },
         },
       },
-    },
-  },
+      extensions = {
+        ["ui-select"] = {
+          themes.get_dropdown({
+            previewer = false,
+            layout_config = { width = 0.45, height = 0.35 },
+          }),
+        },
+      },
+    }
+  end,
+  config = function(_, opts)
+    local telescope = require("telescope")
+    telescope.setup(opts)
+    telescope.load_extension("ui-select")
+    pcall(telescope.load_extension, "fzf") -- don't error if the build failed
+  end,
 }

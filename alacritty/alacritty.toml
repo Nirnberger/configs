@@ -32,3 +32,9 @@ import = [
     "~/.config/alacritty/themes/tokyo-night-storm.toml"
 ]
 
+[keyboard]
+bindings = [
+  { key= "Q",              mods= "Command",                    action= "None"             },
+  { key= "W",              mods= "Command",                    action= "None"             }
+]
+
