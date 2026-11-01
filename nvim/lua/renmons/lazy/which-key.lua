@@ -18,6 +18,7 @@ return {
       { "<leader>g", group = "git" },
       { "<leader>j", group = "java" },
       { "<leader>n", group = "notes / tree / search" },
+      { "<leader>q", group = "sessions" },
       { "<leader>s", group = "splits" },
       { "<leader>t", group = "tabs / today" },
       { "<leader>T", group = "tests" },

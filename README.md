@@ -29,9 +29,11 @@ Uses HTTPS since the new Mac has no SSH key yet. After adding one:
 Then:
 
 - Install Alacritty by hand (see the note in `Brewfile`).
-- Open nvim once: Mason installs the language servers and formatters, treesitter compiles parsers.
+- `install.sh` already installs the nvim plugins and every Mason package (language servers,
+  formatters, debuggers). Treesitter compiles its parsers the first time you open a file.
 - Dev boxes (`prefix D` in tmux) need Tailscale, `Host homeserver` (or `DEV_HOST` in `~/.zshenv`)
-  in `~/.ssh/config`, and `~/bin/dev` from the server, which isn't in this repo. Until then
+  in `~/.ssh/config`, and `~/bin/dev` from the server, which isn't in this repo. `install.sh`
+  fetches it when the server is reachable; otherwise set those up and run it again. Until then
   `prefix D` only shows what's missing.
 - tmux installs its plugins on first start. Later, `prefix + I` re-installs and `prefix + U` updates them. The prefix is `Ctrl+Space`.
 
