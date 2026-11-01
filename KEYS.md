@@ -147,7 +147,8 @@ Prefix is `Ctrl Space`: press it, let go, then the key.
 | `prefix H/J/K/L` | Resize pane (hold and repeat) |
 | `prefix z` | Zoom pane to full size and back |
 | `prefix s` | Move pane to its own window |
-| `prefix f` | **Project switcher**: pick a project, jumps to its session (creates it if new) |
+| `prefix f` | **Project switcher**: running sessions + your projects. Opens nvim + a shell window |
+| `prefix F` | Add the current folder (its git repo) as a project |
 | `prefix w` | All sessions and windows as a tree, with preview |
 | `prefix G` | lazygit in a popup (current folder) |
 | `prefix p` | Scratch shell in a popup, `exit` closes it |
@@ -157,6 +158,19 @@ Prefix is `Ctrl Space`: press it, let go, then the key.
 | `prefix I` / `U` | Install / update plugins |
 | `prefix Ctrl s` / `Ctrl r` | Save / restore sessions (also automatic every 15 min) |
 | Mouse wheel | Scroll back (enters copy mode, `q` leaves) |
+
+In a split window every pane has a title bar (`1 nvim · configs`); the active pane's is blue.
+
+### Project switcher (`prefix f`)
+
+Shows running sessions and the projects in `~/.config/sesh/sesh.toml`, not every folder you've visited.
+
+| Key | What |
+| --- | --- |
+| type + `Enter` | Open the project (any folder name works too, via zoxide) |
+| `Ctrl a` | Show all folders you've visited |
+| `Ctrl d` | Close the selected session |
+| `Ctrl e` | Edit the project list (remove old ones there) |
 
 ### Copy mode
 

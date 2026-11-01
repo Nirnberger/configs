@@ -20,4 +20,7 @@ tmux/plugins/
 !zsh/
 !zsh/**
 
+!sesh/
+!sesh/**
+
 .DS_Store

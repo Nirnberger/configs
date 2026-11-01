@@ -1,0 +1,13 @@
+# Projects for the tmux project switcher.
+#   <prefix> f   pick a project (ctrl-e in the list edits this file)
+#   <prefix> F   add the folder of the current pane (its git repo root) as a project
+# A project opens with nvim in window 1 and a shell in window 2.
+
+[[session]]
+name = "configs"
+path = "~/.config"
+startup_command = "nvim"
+windows = ["shell"]
+
+[[window]]
+name = "shell"
