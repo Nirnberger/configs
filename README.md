@@ -10,6 +10,8 @@ so the other apps' config dirs never get committed.
 | `alacritty/` | Alacritty terminal |
 | `zsh/` | `.zshrc`, symlinked to `~/.zshrc` by `install.sh` |
 
+All key bindings: [KEYS.md](KEYS.md).
+
 ## New Mac
 
 ```bash
