@@ -25,11 +25,7 @@ map("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
 map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down centered" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up centered" })
 
--- Window movement
-map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
-map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
-map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
-map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
+-- Window movement <C-h/j/k/l> (also into tmux panes): lazy/tmux-navigator.lua
 
 -- Window splits
 map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })

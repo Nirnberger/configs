@@ -23,7 +23,6 @@ vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
 
-vim.opt.scrolloff = 4
 vim.opt.termguicolors = true
 vim.opt.spelllang = { "en_us" } --, "de_de" }
 vim.opt.spell = false
@@ -42,9 +41,9 @@ vim.opt.laststatus = 3 -- global statusline, matches globalstatus = true
 
 vim.opt.mousescroll = "ver:3,hor:6"
 
-vim.opt.guicursor = {
-	"n-v-c:block-Cursor",
-	"i-ci-ve:ver25-InsertCursor",
-	"r-cr:hor20-Cursor",
-	"o:hor50-Cursor",
-}
+-- guicursor + cursor colors: autocommands.lua
+
+-- no plugins need these hosts; silences their :checkhealth warnings
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_python3_provider = 0

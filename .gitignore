@@ -1,9 +1,13 @@
 *
 
 !.gitignore
+!README.md
+!Brewfile
+!install.sh
 
 !alacritty/
 !alacritty/**
+alacritty/catppuccin/
 
 !nvim/
 !nvim/**
@@ -11,3 +15,8 @@
 !tmux/
 !tmux/**
 tmux/plugins/
+
+!zsh/
+!zsh/**
+
+.DS_Store
