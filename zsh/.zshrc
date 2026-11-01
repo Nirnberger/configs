@@ -151,3 +151,4 @@ compinit -d ~/.zcompdump
 alias assume="source assume" # granted needs to run in this shell to set the env
 #
 # End of Docker CLI completions
+export PATH="$HOME/bin:$PATH"
