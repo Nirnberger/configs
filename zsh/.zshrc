@@ -54,8 +54,19 @@ zstyle ':vcs_info:git*' stagedstr '+'
 # but can be slow on large repos
 zstyle ':vcs_info:*:*' check-for-changes true
 
+# AWS profile in the right prompt, red when it looks dangerous
+aws_prompt() {
+  local p="${AWS_PROFILE:-$AWS_VAULT}"
+  [[ -z "$p" ]] && return
+  if [[ "$p" == *(prod|admin)* ]]; then
+    print -n "%F{red}☁ $p%f "
+  else
+    print -n "%F{yellow}☁ $p%f "
+  fi
+}
+
 # Set the right prompt to the vcs_info message
-RPROMPT='⎇ ${vcs_info_msg_0_}'
+RPROMPT='$(aws_prompt)⎇ ${vcs_info_msg_0_}'
 PROMPT='%(?.%F{blue}⏺.%F{red}⏺)%f %2~ > '
 export HISTSIZE=20000
 export HISTFILESIZE=20000
@@ -128,7 +139,9 @@ fpath=("$HOME/.docker/completions" $fpath)
 autoload -Uz compinit
 compinit -d ~/.zcompdump
 #
-# for aws default profile login
-export AWS_PROFILE=admin
+# AWS: no default profile, so nothing deploys as admin by accident.
+# Pick one per shell: `assume <profile>` (granted) or `export AWS_PROFILE=<profile>`.
+# SSO profiles: `aws sso login --profile <profile>` once per session.
+alias assume="source assume" # granted needs to run in this shell to set the env
 #
 # End of Docker CLI completions

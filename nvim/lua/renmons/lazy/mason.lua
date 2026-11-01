@@ -13,7 +13,10 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"pyright",
-				"ts_ls",
+				"vtsls",
+				"eslint",
+				"jsonls",
+				"yamlls",
 				"rust_analyzer",
 				"clangd",
 				"graphql",

@@ -14,6 +14,14 @@ brew "node"
 brew "python"
 # nvim-treesitter (main branch) compiles parsers with the tree-sitter CLI
 brew "tree-sitter-cli"
+# nvim: <leader>gg
+brew "lazygit"
+
+# AWS: CLI + per-shell profile switching (`assume <profile>`)
+brew "awscli"
+tap "common-fate/granted"
+brew "granted"
+
 # vimtex: PDF viewer. LaTeX itself is big, install when needed: brew install --cask mactex-no-gui
 cask "skim"
 

@@ -14,6 +14,7 @@ return {
       { "<leader>b", group = "buffers" },
       { "<leader>c", group = "code" },
       { "<leader>f", group = "find" },
+      { "<leader>g", group = "git" },
       { "<leader>n", group = "notes / tree / search" },
       { "<leader>s", group = "splits" },
       { "<leader>t", group = "tabs / today" },

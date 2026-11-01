@@ -8,7 +8,8 @@ return {
       "c", "lua", "vim", "vimdoc", "query",
       "python", "rust",
       "javascript", "typescript", "tsx", "html", "graphql",
-      "bash", "json",
+      "bash", "json", "yaml", "toml",
+      "java", "dockerfile", "hcl", "terraform",
       "markdown", "markdown_inline",
       "elixir",
     })
