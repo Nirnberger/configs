@@ -20,6 +20,9 @@ Leader is `Space`, local leader is `,`.
 | `<leader>ff` | Find file |
 | `<leader>fg` | Grep the project |
 | `<leader>fb` | Open buffers |
+| `<leader>fr` | Recent files |
+| `<leader>fw` | Grep the word under the cursor |
+| `<leader>f.` | Back to the last search |
 | `<leader>bn` / `bp` / `bd` | Next / previous / close buffer |
 | `<leader>sv` / `sh` | Split vertical / horizontal |
 | `<leader>se` / `sx` | Equal split sizes / close split |
