@@ -41,6 +41,13 @@ vim.opt.laststatus = 3 -- global statusline, matches globalstatus = true
 
 vim.opt.mousescroll = "ver:3,hor:6"
 
+vim.opt.signcolumn = "yes" -- text doesn't shift when git or error marks appear
+vim.opt.updatetime = 250 -- default 4000; CursorHold fires sooner
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.inccommand = "split" -- live preview of :s
+vim.opt.confirm = true -- ask instead of failing on :q with unsaved changes
+
 -- guicursor + cursor colors: autocommands.lua
 
 -- no plugins need these hosts; silences their :checkhealth warnings

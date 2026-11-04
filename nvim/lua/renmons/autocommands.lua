@@ -108,3 +108,13 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   group = cursor_group,
   callback = set_cursor_highlights,
 })
+
+-- Reload files changed outside nvim (git, Claude Code). Needs focus-events in tmux.conf.
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "TermClose", "TermLeave" }, {
+  group = vim.api.nvim_create_augroup("ReloadChangedFiles", { clear = true }),
+  callback = function()
+    if vim.o.buftype ~= "nofile" and vim.fn.getcmdwintype() == "" then
+      vim.cmd("checktime")
+    end
+  end,
+})

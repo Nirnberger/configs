@@ -96,6 +96,9 @@ map("n", "<leader>nh", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" 
 map("n", "<leader>ff", "<cmd>Telescope find_files theme=dropdown<CR>", { desc = "Find files" })
 map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Live grep" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
+map("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>", { desc = "Recent files" })
+map("n", "<leader>fw", "<cmd>Telescope grep_string<CR>", { desc = "Grep word under cursor" })
+map("n", "<leader>f.", "<cmd>Telescope resume<CR>", { desc = "Resume last search" })
 
 -- Today
 map("n", "<leader>tt", "<cmd>Today<CR>", { desc = "Open today's note" })

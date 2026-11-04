@@ -33,6 +33,8 @@ Leader is `Space`, local leader is `,`.
 | `J` / `K` (visual) | Move selected lines down / up |
 | `<` / `>` (visual) | Indent and keep the selection |
 | `gc` / `gcc` | Toggle comment (selection / line) |
+| `af` / `if` | Whole function / its body, after `d`, `c`, `y` or `v` (`daf` deletes the function) |
+| `ac` / `ic` | Whole class / its body, same way |
 | `<leader>cf` | Format file (also happens on save) |
 | `Tab` / `Shift Tab` | Next / previous completion item, or jump inside a snippet |
 | `Ctrl j` / `Ctrl k` | Next / previous completion item |
