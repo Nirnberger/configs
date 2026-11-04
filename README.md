@@ -7,7 +7,8 @@ so the other apps' config dirs never get committed.
 | --- | --- |
 | `nvim/` | Neovim (lazy.nvim, plugins pinned in `lazy-lock.json`) |
 | `tmux/` | tmux, plugins via TPM (installed, not committed) |
-| `alacritty/` | Alacritty terminal |
+| `ghostty/` | Ghostty terminal (installed by the `Brewfile`) |
+| `alacritty/` | Alacritty terminal, optional (see the note in `Brewfile`) |
 | `zsh/` | `.zshrc`, symlinked to `~/.zshrc` by `install.sh` |
 
 All key bindings: [KEYS.md](KEYS.md).
@@ -28,7 +29,7 @@ Uses HTTPS since the new Mac has no SSH key yet. After adding one:
 
 Then:
 
-- Install Alacritty by hand (see the note in `Brewfile`).
+- Open Ghostty: it starts zsh, which starts tmux.
 - `install.sh` already installs the nvim plugins and every Mason package (language servers,
   formatters, debuggers). Treesitter compiles its parsers the first time you open a file.
 - Dev boxes (`prefix D` in tmux) need Tailscale, `Host homeserver` (or `DEV_HOST` in `~/.zshenv`)

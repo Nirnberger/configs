@@ -171,7 +171,7 @@ Prefix is `Ctrl Space`: press it, let go, then the key.
 | `prefix G` | lazygit in a popup (current folder) |
 | `prefix p` | Scratch shell in a popup, `exit` closes it |
 | `prefix Space` | Pick a hash / URL / path / ARN from the screen: `Enter` copies, `Tab` types it |
-| `prefix d` | Detach, asks first (`y`): hides tmux **and closes the Alacritty window** (zsh starts tmux with exec); sessions keep running |
+| `prefix d` | Detach, asks first (`y`): hides tmux **and closes the terminal window** (zsh starts tmux with exec); sessions keep running |
 | `prefix r` | Reload `tmux.conf` |
 | `prefix I` / `U` | Install / update plugins |
 | `prefix Ctrl s` / `Ctrl r` | Save / restore sessions (also automatic every 15 min, restored when tmux starts). Panes with nvim get their files back (see Sessions under Neovim) |
@@ -204,7 +204,7 @@ lands in the macOS clipboard (`⌘V` anywhere).
 | Mouse drag | Select inside the pane, copies on release |
 | Double / triple click | Copy word / line |
 
-Holding `Shift` while dragging bypasses tmux and lets Alacritty select across the whole window,
+Holding `Shift` while dragging bypasses tmux and lets the terminal select across the whole window,
 panes included. Leave it out to stay inside the pane.
 
 ## Shell (zsh)

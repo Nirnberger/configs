@@ -41,7 +41,9 @@ brew "nvm"
 brew "zsh-autosuggestions"
 
 cask "font-jetbrains-mono-nerd-font"
+cask "ghostty"
 
-# The alacritty cask is disabled (fails Gatekeeper since 2026-09-01).
+# Ghostty is the default terminal. Alacritty is optional and not allowed on the work Mac:
+# its cask is disabled (fails Gatekeeper since 2026-09-01).
 # Download the .dmg from https://github.com/alacritty/alacritty/releases, then:
 #   xattr -dr com.apple.quarantine /Applications/Alacritty.app
