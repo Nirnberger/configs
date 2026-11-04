@@ -167,7 +167,7 @@ Prefix is `Ctrl Space`: press it, let go, then the key.
 | `prefix f` | **Project switcher**: running sessions + your projects. Opens nvim + a shell window |
 | `prefix F` | Add the current folder (its git repo) as a project |
 | `prefix D` | Dev boxes: go to the `boxes` session and pick a box; each box gets its own window |
-| `prefix w` | All sessions and windows as a tree, with preview |
+| `prefix w` | All sessions and windows as a tree, with preview. A second terminal window (`Cmd N`) opens its own session, numbered, and shows up here too; it stays after closing the window (`Ctrl d` in `prefix f` closes it) |
 | `prefix G` | lazygit in a popup (current folder) |
 | `prefix p` | Scratch shell in a popup, `exit` closes it |
 | `prefix Space` | Pick a hash / URL / path / ARN from the screen: `Enter` copies, `Tab` types it |
