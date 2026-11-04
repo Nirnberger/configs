@@ -26,6 +26,7 @@ Leader is `Space`, local leader is `,`.
 | `<leader>bn` / `bp` / `bd` | Next / previous / close buffer |
 | `<leader>sv` / `sh` | Split vertical / horizontal |
 | `<leader>se` / `sx` | Equal split sizes / close split |
+| `Ctrl w` then `>` / `<` | Split wider / narrower; keep pressing `>` `<` without `Ctrl w`, stops after a 1 s pause or any other key |
 | `<leader>to` / `tx` / `tn` / `tp` | New / close / next / previous tab |
 | `<leader>nh` | Clear search highlight |
 

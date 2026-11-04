@@ -33,6 +33,14 @@ map("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
 
+-- <C-w>> once, then > or < keep resizing until a pause of 'timeoutlen' or any other key
+for _, key in ipairs({ ">", "<lt>" }) do
+	local resize = "<C-w>" .. key .. "<Plug>(win-resize)"
+	map("n", "<C-w>" .. key, resize, { remap = true, desc = "Resize split (repeat with > <)" })
+	map("n", "<Plug>(win-resize)" .. key, resize, { remap = true })
+end
+map("n", "<Plug>(win-resize)", "<Nop>")
+
 -- Tabs
 map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
