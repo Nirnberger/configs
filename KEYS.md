@@ -92,6 +92,10 @@ A *hunk* is one block of changed lines; the coloured bar in the left column mark
 
 Java, TS/JS, Python, Rust/C/C++. Set a breakpoint, then `<leader>dc` and pick what to run.
 
+A Java app started outside nvim: add
+`-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=127.0.0.1:5005` after `java`, then
+`<leader>dc` → *Attach to localhost:5005*. `suspend=y` waits for nvim, for breakpoints during startup.
+
 | Key | What |
 | --- | --- |
 | `<leader>db` or `dd` / `dB` | Breakpoint / breakpoint with a condition |

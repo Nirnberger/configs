@@ -96,6 +96,10 @@ local function start()
   -- test runner and debugging go through nvim-dap
   if #bundles() > 0 then
     jdtls.setup_dap({ hotcodereplace = "auto" })
+    -- for apps started outside nvim with -agentlib:jdwp on port 5005 (see KEYS.md)
+    require("dap").configurations.java = {
+      { type = "java", request = "attach", name = "Attach to localhost:5005", hostName = "127.0.0.1", port = 5005 },
+    }
   end
 end
 
