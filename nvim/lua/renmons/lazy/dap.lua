@@ -88,6 +88,8 @@ return {
       "mfussenegger/nvim-dap-python",
     },
     keys = {
+      -- <leader>dd too: unmapped it falls through to a plain dd and deletes the line
+      { "<leader>dd", function() require("dap").toggle_breakpoint() end, desc = "Debug: Toggle breakpoint" },
       { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Debug: Toggle breakpoint" },
       {
         "<leader>dB",

@@ -94,7 +94,7 @@ Java, TS/JS, Python, Rust/C/C++. Set a breakpoint, then `<leader>dc` and pick wh
 
 | Key | What |
 | --- | --- |
-| `<leader>db` / `dB` | Breakpoint / breakpoint with a condition |
+| `<leader>db` or `dd` / `dB` | Breakpoint / breakpoint with a condition |
 | `<leader>dc` | Start, or continue to the next breakpoint |
 | `<leader>dn` / `di` / `do` | Step over / into / out of |
 | `<leader>dC` | Run to the cursor |

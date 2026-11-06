@@ -4,6 +4,8 @@ local map = vim.keymap.set
 
 -- Better defaults
 map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+-- a mistyped <leader>d... must not run as a delete
+map("n", "<leader>d", "<Nop>", { silent = true })
 
 -- Blank-line dd goes to void register
 map("n", "dd", function()
