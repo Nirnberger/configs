@@ -29,7 +29,8 @@ Uses HTTPS since the new Mac has no SSH key yet. After adding one:
 
 Then:
 
-- Open Ghostty: it starts zsh, which starts tmux.
+- Open Ghostty: it starts zsh, which starts tmux. Only Ghostty and Alacritty do that; terminals
+  inside IDEs or app panels stay a plain zsh.
 - `install.sh` already installs the nvim plugins and every Mason package (language servers,
   formatters, debuggers). Treesitter compiles its parsers the first time you open a file.
 - Dev boxes (`prefix D` in tmux) need Tailscale, `Host homeserver` (or `DEV_HOST` in `~/.zshenv`)

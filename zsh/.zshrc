@@ -118,7 +118,9 @@ done
 unset f
 
 # persistent tmux session on startup if not open already
-if [[ -o interactive ]] && command -v tmux >/dev/null 2>&1 && [[ -z "$TMUX" ]]; then
+# only in the real terminals: shells in IDEs or app panels (Claude, IntelliJ, VS Code) stay plain
+if [[ -o interactive ]] && command -v tmux >/dev/null 2>&1 && [[ -z "$TMUX" ]] &&
+  [[ "$TERM_PROGRAM" == ghostty || -n "$ALACRITTY_WINDOW_ID" ]]; then
   # main already open in a terminal window: a second window would only mirror it,
   # so it gets its own session (prefix w switches between them)
   [[ -n "$(tmux list-clients -t main 2>/dev/null)" ]] && exec tmux new-session
