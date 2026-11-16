@@ -178,13 +178,14 @@ file reopens them; `nvim file` starts fresh with just that file.
 
 ## tmux
 
-Prefix is `Ctrl Space`: press it, let go, then the key.
+Prefix is `Ctrl Space`: press it, let go, then the key. While tmux waits for that key, the session
+name on the left of the status bar turns orange.
 
 | Key | What |
 | --- | --- |
 | `prefix t` / `g` | Split side by side / top and bottom |
 | `prefix c` | New window |
-| `prefix 1…9` | Go to window |
+| `prefix 1…9` or `Cmd 1…9` | Go to window (`Cmd` only in Ghostty) |
 | `prefix x` | Close pane |
 | `prefix h/j/k/l` | Go to pane (or `Ctrl h/j/k/l` without the prefix) |
 | `prefix H/J/K/L` | Resize pane (hold and repeat) |
@@ -200,9 +201,10 @@ Prefix is `Ctrl Space`: press it, let go, then the key.
 | `prefix p` | Scratch shell in a popup, `exit` closes it |
 | `prefix Space` | Pick a hash / URL / path / ARN from the screen: `Enter` copies, `Tab` types it |
 | `prefix d` | Detach, asks first (`y`): hides tmux **and closes the terminal window** (zsh starts tmux with exec); sessions keep running |
+| `prefix Ctrl l` | Clear the screen (`Ctrl l` alone moves to the pane on the right) |
 | `prefix r` | Reload `tmux.conf` |
 | `prefix I` / `U` | Install / update plugins |
-| `prefix Ctrl s` / `Ctrl r` | Save / restore sessions (also automatic every 15 min, restored when tmux starts). Panes with nvim get their files back (see Sessions under Neovim) |
+| `prefix Ctrl s` / `Ctrl r` | Save / restore sessions incl. the text in each pane (also automatic every 15 min, restored when tmux starts). Panes with nvim get their files back (see Sessions under Neovim) |
 | Mouse wheel | Scroll back (enters copy mode, `q` leaves) |
 
 In a split window every pane has a title bar (`1 nvim · configs`); the active pane's is blue.

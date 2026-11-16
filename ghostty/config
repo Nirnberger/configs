@@ -21,6 +21,17 @@ quit-after-last-window-closed = true
 keybind = cmd+q=ignore
 keybind = cmd+w=ignore
 
+# Cmd 1-9 jump to tmux window 1-9: sends the prefix (Ctrl Space = NUL) and the number
+keybind = cmd+1=text:\x001
+keybind = cmd+2=text:\x002
+keybind = cmd+3=text:\x003
+keybind = cmd+4=text:\x004
+keybind = cmd+5=text:\x005
+keybind = cmd+6=text:\x006
+keybind = cmd+7=text:\x007
+keybind = cmd+8=text:\x008
+keybind = cmd+9=text:\x009
+
 # Tokyo Night Storm
 background = #24283b
 foreground = #a9b1d6
