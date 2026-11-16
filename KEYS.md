@@ -73,6 +73,16 @@ Leader is `Space`, local leader is `,`.
 | `<leader>xq` | Quickfix list |
 | `<leader>ud` | Diagnostics: full text below the line ↔ short at the end of the line |
 
+### Folders (oil)
+
+| Key | What |
+| --- | --- |
+| `-` | Open the parent folder of this file as a buffer (`-` again goes up) |
+| `<leader>E` | Same as a floating window |
+| `Enter` / `q` | Open the entry / close oil |
+
+Edit the list like text: rename a line = rename the file, `dd` = delete, cut and paste into another folder = move. Nothing happens until you `:w`.
+
 ### Git (`<leader>g`)
 
 A *hunk* is one block of changed lines; the coloured bar in the left column marks it.
@@ -87,6 +97,10 @@ A *hunk* is one block of changed lines; the coloured bar in the left column mark
 | `<leader>gb` / `gB` | Blame this line / blame inline for every line |
 | `<leader>gd` | Diff against the staged version |
 | `<leader>gD` | Diff against the last commit (`HEAD~1`) |
+| `<leader>gv` / `gV` | Diffview: all changes side by side / close it |
+| `<leader>gc` | Diffview: the last commit |
+| `<leader>gm` | Diffview: this branch vs `origin/main` |
+| `<leader>gh` / `gH` | Commit history of this file / of the repo (Enter opens a commit's diff) |
 | `<leader>gl` / `gf` | lazygit log / lazygit for this file's repo |
 
 ### Debug (`<leader>d`)
@@ -229,6 +243,12 @@ panes included. Leave it out to stay inside the pane.
 | `nconf` / `zconf` | Edit nvim config / `.zshrc` |
 | `rsource` | Reload `.zshrc` |
 | `→` (right arrow) | Accept the grey autosuggestion |
+| `ll` / `lt` / `ls` | eza: long list with git status / tree (2 levels) / list |
+| `cat <file>` | bat: syntax highlighting, line numbers |
+| `Ctrl t` / `Alt c` | fzf: pick a file (with preview) / jump to a folder |
+| `Ctrl r` | fzf history search |
+| `git lg` / `st` / `amend` / `undo` / `last` | Log graph / short status / amend without editing / undo last commit (changes stay staged) / last commit with files |
+| `git diff`, `git show` | Shown through delta (`n` / `N` next / previous file) |
 
 ### AWS
 
