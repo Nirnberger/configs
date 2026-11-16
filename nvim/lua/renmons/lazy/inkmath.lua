@@ -8,6 +8,8 @@ return {
   build = ":InkMath build", -- installs the MathJax worker's node dependencies
   opts = {
     preview = { position = "above" }, -- insert-mode preview float above the formula
+    -- render-markdown sets 'conceallevel' in markdown; inkmath leaves it alone there
+    overrides = { markdown = { conceal = false }, quarto = { conceal = false }, rmd = { conceal = false } },
   },
   keys = {
     { "<leader>um", "<Plug>(inkmath-toggle)", ft = { "tex", "markdown" }, desc = "Toggle math images" },
