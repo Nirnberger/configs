@@ -169,9 +169,33 @@ return {
 			{
 				"<leader>du",
 				function()
-					require("dapui").toggle()
+					-- reset: windows dragged out of shape come back at their configured size
+					require("dapui").toggle({ reset = true })
 				end,
 				desc = "Debug: Toggle UI",
+			},
+			{
+				"<leader>dv",
+				function()
+					require("dapui").float_element("scopes", { enter = true })
+				end,
+				desc = "Debug: Variables (popup)",
+			},
+			{
+				"<leader>ds",
+				function()
+					require("dapui").float_element("stacks", { enter = true })
+				end,
+				desc = "Debug: Call stack (popup)",
+			},
+			{
+				"<leader>dw",
+				function()
+					local expr = vim.fn.expand("<cexpr>")
+					require("dapui").elements.watches.add(expr)
+					vim.notify("Watching: " .. expr)
+				end,
+				desc = "Debug: Watch expression under cursor",
 			},
 			{
 				"<leader>de",
@@ -185,18 +209,28 @@ return {
 		config = function()
 			local dap, dapui = require("dap"), require("dapui")
 
-			dapui.setup()
+			dapui.setup({
+				layouts = {
+					{
+						-- breakpoints aren't listed: the ● in the sign column shows them
+						elements = {
+							{ id = "scopes", size = 0.6 },
+							{ id = "watches", size = 0.2 },
+							{ id = "stacks", size = 0.2 },
+						},
+						size = 45,
+						position = "left",
+					},
+					-- the console stays empty when attaching to a running app, so only the REPL
+					{ elements = { "repl" }, size = 12, position = "bottom" },
+				},
+			})
 			require("nvim-dap-virtual-text").setup({})
 
-			-- open the UI when a session starts, close it when the program ends
+			-- open the UI when a session starts; it stays open after the program ends so the last
+			-- state can still be read (<leader>du closes it)
 			dap.listeners.after.event_initialized["dapui"] = function()
-				dapui.open()
-			end
-			dap.listeners.before.event_terminated["dapui"] = function()
-				dapui.close()
-			end
-			dap.listeners.before.event_exited["dapui"] = function()
-				dapui.close()
+				dapui.open({ reset = true })
 			end
 
 			vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DiagnosticError" })

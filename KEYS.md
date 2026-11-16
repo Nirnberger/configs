@@ -118,7 +118,9 @@ A Java app started outside nvim: add
 | `<leader>dn` / `di` / `do` | Step over / into / out of |
 | `<leader>dC` | Run to the cursor |
 | `<leader>de` | Value of the expression under the cursor (or selection) |
-| `<leader>du` | Show / hide the debug windows |
+| `<leader>du` | Show / hide the debug windows (variables, watches, call stack, REPL); stay open after the program ends |
+| `<leader>dv` / `ds` | Variables / call stack in a popup, without the side panel |
+| `<leader>dw` | Watch the expression under the cursor |
 | `<leader>dr` / `dl` / `dq` | Restart / run last again / stop |
 
 ### Tests (`<leader>T`)
