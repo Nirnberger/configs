@@ -17,3 +17,15 @@ name = "uni"
 path = "~/Documents/uni"
 startup_command = "nvim"
 windows = ["shell"]
+
+[[session]]
+name = "policy-service"
+path = "~/Library/CloudStorage/OneDrive-freenetGroup/Dokumente/policy-service"
+startup_command = "nvim"
+windows = ["shell"]
+
+[[session]]
+name = "testrunner-run"
+path = "~/dev/testrunner-run"
+startup_command = "nvim"
+windows = ["shell"]
