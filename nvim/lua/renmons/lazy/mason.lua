@@ -16,6 +16,9 @@ return {
 	-- One list for everything, so install.sh can install it headless (:MasonToolsInstallSync)
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		-- after the UI is up (~20 ms off startup); cmd keeps install.sh's headless :MasonToolsInstallSync working
+		event = "VeryLazy",
+		cmd = { "MasonToolsInstall", "MasonToolsInstallSync", "MasonToolsUpdate", "MasonToolsUpdateSync" },
 		dependencies = { "mason-org/mason.nvim", "mason-org/mason-lspconfig.nvim" },
 		opts = {
 			ensure_installed = {

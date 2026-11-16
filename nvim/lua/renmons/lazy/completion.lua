@@ -81,6 +81,7 @@ return {
 
 	{
 		"hrsh7th/vim-vsnip",
+		lazy = true, -- loaded with nvim-cmp on the first InsertEnter
 		dependencies = {
 			"hrsh7th/vim-vsnip-integ",
 			"rafamadriz/friendly-snippets",

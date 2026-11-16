@@ -97,9 +97,25 @@ alias ...='cd ../..'
 
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" # ghcup-env
 
-command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
+# Init scripts of zoxide, fzf and starship are cached: generating them costs ~100 ms each.
+# The cache is rebuilt when the tool's binary is newer (e.g. after brew upgrade).
+_cached_init() {
+  local name=$1; shift
+  local bin=${commands[$1]} cache=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/$name.zsh
+  [[ -n $bin ]] || return
+  if [[ ! -s $cache || $bin -nt $cache ]]; then
+    mkdir -p ${cache:h} && "$@" >| $cache
+  fi
+  source $cache
+}
 
-export DBUS_LAUNCHD_SESSION_BUS_SOCKET=$(launchctl getenv DBUS_LAUNCHD_SESSION_BUS_SOCKET)
+_cached_init zoxide zoxide init zsh
+
+# Slow lookups (~90-180 ms) run once in the shell that starts tmux; every tmux pane inherits them.
+[[ -z $DBUS_LAUNCHD_SESSION_BUS_SOCKET ]] &&
+  export DBUS_LAUNCHD_SESSION_BUS_SOCKET=$(launchctl getenv DBUS_LAUNCHD_SESSION_BUS_SOCKET)
+[[ -z $GH_PACKAGES_TOKEN ]] && command -v gh >/dev/null 2>&1 &&
+  export GH_PACKAGES_TOKEN="$(gh auth token 2>/dev/null)"
 
 # Load Angular CLI autocompletion.
 # Defer Angular completion; generate once and reuse a file instead of subshell every startup
@@ -130,7 +146,14 @@ fi
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=("$HOME/.docker/completions" $fpath)
 autoload -Uz compinit
-compinit -d ~/.zcompdump
+# full security check (compaudit) only once a day, otherwise reuse the dump
+_zcomp_stale=(~/.zcompdump(N.mh+24))
+if (( $#_zcomp_stale )) || [[ ! -s ~/.zcompdump ]]; then
+  compinit -d ~/.zcompdump
+else
+  compinit -C -d ~/.zcompdump
+fi
+unset _zcomp_stale
 # End of Docker CLI completions
 
 # AWS: no default profile, so nothing deploys as admin by accident.
@@ -147,10 +170,9 @@ export FZF_ALT_C_COMMAND='fd --type d --hidden --exclude .git'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --color=bg+:#292e42,fg+:#c0caf5,hl:#7aa2f7,hl+:#7dcfff,pointer:#ff9e64,prompt:#7aa2f7,info:#565f89'
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:200 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree -L2 --color=always {}'"
-source <(fzf --zsh)
-command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+_cached_init fzf fzf --zsh
+_cached_init starship starship init zsh
 
-export GH_PACKAGES_TOKEN="$(gh auth token)"
 export AWS_REGION=eu-central-1
 
 # machine-local secrets (not in the repo), e.g. MCP_API_KEY
