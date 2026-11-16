@@ -98,7 +98,10 @@ alias rhis="fzf_history"
 alias python="python3"
 alias zconf="nvim ~/.zshrc"
 alias rsource="source ~/.zshrc"
-alias ls="ls --color"
+alias ls="eza --group-directories-first"
+alias ll="eza -lah --git --group-directories-first"
+alias lt="eza --tree -L2"
+alias cat="bat --paging=never"
 alias pip="pip3"
 alias fman='compgen -c | fzf | xargs man'
 alias suml='awk "{ sum+=\$1 } END { print sum }"'
@@ -155,3 +158,14 @@ alias assume="source assume" # granted needs to run in this shell to set the env
 #
 # End of Docker CLI completions
 export PATH="$HOME/bin:$PATH"
+
+source <(fzf --zsh)
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+
+export GH_PACKAGES_TOKEN="$(gh auth token)"
+export PATH="$PATH:$HOME/.local/bin"
+export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+export AWS_REGION=eu-central-1
+
+# machine-local secrets (not in the repo), e.g. MCP_API_KEY
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"

@@ -37,6 +37,10 @@ brew "sesh"
 # zsh
 brew "fzf"
 brew "zoxide"
+brew "eza"
+brew "bat"
+brew "git-delta"
+brew "starship"
 brew "nvm"
 brew "zsh-autosuggestions"
 

@@ -6,11 +6,10 @@
 !Brewfile
 !install.sh
 
-!alacritty/
-!alacritty/**
-alacritty/catppuccin/
-
 !ghostty/
+
+!git/
+!git/**
 !ghostty/**
 
 !nvim/
