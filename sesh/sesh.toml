@@ -2,6 +2,8 @@
 #   <prefix> f   pick a project (ctrl-e in the list edits this file)
 #   <prefix> F   add the folder of the current pane (its git repo root) as a project
 # A project opens with nvim in window 1 and a shell in window 2.
+# Projects added with <prefix> F go to local.toml: per machine, not in the repo.
+import = ["~/.config/sesh/local.toml"]
 
 [[session]]
 name = "configs"
@@ -15,17 +17,5 @@ name = "shell"
 [[session]]
 name = "uni"
 path = "~/Documents/uni"
-startup_command = "nvim"
-windows = ["shell"]
-
-[[session]]
-name = "policy-service"
-path = "~/Library/CloudStorage/OneDrive-freenetGroup/Dokumente/policy-service"
-startup_command = "nvim"
-windows = ["shell"]
-
-[[session]]
-name = "testrunner-run"
-path = "~/dev/testrunner-run"
 startup_command = "nvim"
 windows = ["shell"]

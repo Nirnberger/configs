@@ -43,3 +43,15 @@ Then:
 
 - New brew package you want everywhere: add it to `Brewfile`.
 - After `:Lazy update`, commit `nvim/lazy-lock.json` so the other machine gets the same versions.
+
+## Machine-specific config
+
+The repo holds only what every Mac shares. Work tools, company tokens and secrets live outside it:
+
+| File | Loaded by |
+| --- | --- |
+| `~/.zshrc.local`, `~/.zshrc.d/*.zsh` | `.zshrc`, before tmux starts (tmux panes inherit the exports) |
+| `~/.config/nvim-local/*.lua` | nvim at startup |
+| `~/.config/sesh/local.toml` | the project switcher (`prefix F` adds projects there) |
+
+All of them are optional; without them you get the plain shared setup.

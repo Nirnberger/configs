@@ -149,10 +149,6 @@ project. Files an older setup left in a project can be deleted; the global git i
 | `<leader>jm` (visual) | Extract method |
 | `<leader>jt` / `jT` | Test method / class |
 | `<leader>ju` | Reload after editing `pom.xml` / `build.gradle` |
-| `<leader>jr` / `jR` | Testrunner script (`run-policy-tests.sh`): method / class, against GIT |
-| `<leader>jl` / `jL` | Same, against localhost (`POLICY_LOCAL=1`) |
-| `<leader>jj` | Repeat the last testrunner run |
-| `<leader>je` | Failed tests of the last run to the quickfix list |
 
 ### Toggles, spelling, notes
 
@@ -257,16 +253,3 @@ panes included. Leave it out to stay inside the pane.
 | `Ctrl r` | fzf history search |
 | `git lg` / `st` / `amend` / `undo` / `last` | Log graph / short status / amend without editing / undo last commit (changes stay staged) / last commit with files |
 | `git diff`, `git show` | Shown through delta (`n` / `N` next / previous file) |
-
-### AWS
-
-The right side of the prompt shows the active profile: `☁ name`, red for prod / admin.
-There's no default profile, so commands fail until you pick one.
-
-| Command | What |
-| --- | --- |
-| `assume <profile>` | Use a profile in this shell (granted) |
-| `assume` | Pick a profile from a list |
-| `aws sso login --profile <p>` | Log in to an SSO profile |
-| `aws sts get-caller-identity` | Who am I right now? |
-| `unset AWS_PROFILE` | Back to no profile |

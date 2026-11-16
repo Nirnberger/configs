@@ -46,19 +46,8 @@ zstyle ':vcs_info:git*' stagedstr '+'
 # but can be slow on large repos
 zstyle ':vcs_info:*:*' check-for-changes true
 
-# AWS profile in the right prompt, red when it looks dangerous
-aws_prompt() {
-  local p="${AWS_PROFILE:-$AWS_VAULT}"
-  [[ -z "$p" ]] && return
-  if [[ "$p" == *(prod|admin)* ]]; then
-    print -n "%F{red}☁ $p%f "
-  else
-    print -n "%F{yellow}☁ $p%f "
-  fi
-}
-
 # Set the right prompt to the vcs_info message
-RPROMPT='$(aws_prompt)⎇ ${vcs_info_msg_0_}'
+RPROMPT='⎇ ${vcs_info_msg_0_}'
 PROMPT='%(?.%F{blue}⏺.%F{red}⏺)%f %2~ > '
 export HISTSIZE=20000
 export HISTFILESIZE=20000
@@ -114,8 +103,6 @@ _cached_init zoxide zoxide init zsh
 # Slow lookups (~90-180 ms) run once in the shell that starts tmux; every tmux pane inherits them.
 [[ -z $DBUS_LAUNCHD_SESSION_BUS_SOCKET ]] &&
   export DBUS_LAUNCHD_SESSION_BUS_SOCKET=$(launchctl getenv DBUS_LAUNCHD_SESSION_BUS_SOCKET)
-[[ -z $GH_PACKAGES_TOKEN ]] && command -v gh >/dev/null 2>&1 &&
-  export GH_PACKAGES_TOKEN="$(gh auth token 2>/dev/null)"
 
 # Load Angular CLI autocompletion.
 # Defer Angular completion; generate once and reuse a file instead of subshell every startup
@@ -131,6 +118,12 @@ for f in /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
          ~/Documents/repos/zsh-autosuggestions/zsh-autosuggestions.zsh; do
   [ -f "$f" ] && source "$f" && break
 done
+unset f
+
+# Machine-local config, not in this repo: work setup (AWS, company tokens), secrets.
+# Loaded before tmux starts, so every tmux pane inherits what it exports.
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+for f in ~/.zshrc.d/*.zsh(N); do source $f; done
 unset f
 
 # persistent tmux session on startup if not open already
@@ -156,11 +149,6 @@ fi
 unset _zcomp_stale
 # End of Docker CLI completions
 
-# AWS: no default profile, so nothing deploys as admin by accident.
-# Pick one per shell: `assume <profile>` (granted) or `export AWS_PROFILE=<profile>`.
-# SSO profiles: `aws sso login --profile <profile>` once per session.
-alias assume="source assume" # granted needs to run in this shell to set the env
-
 export PATH="$HOME/bin:$PATH"
 
 # fzf: fd for file lists (respects .gitignore, shows dotfiles), bat preview, Tokyo Night colors
@@ -173,7 +161,4 @@ export FZF_ALT_C_OPTS="--preview 'eza --tree -L2 --color=always {}'"
 _cached_init fzf fzf --zsh
 _cached_init starship starship init zsh
 
-export AWS_REGION=eu-central-1
 
-# machine-local secrets (not in the repo), e.g. MCP_API_KEY
-[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"

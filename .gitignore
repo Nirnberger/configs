@@ -25,5 +25,6 @@ tmux/plugins/
 
 !sesh/
 !sesh/**
+sesh/local.toml
 
 .DS_Store
