@@ -1,16 +1,3 @@
-#export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-#export BROWSER="firefox"
-#export PATH=$PATH:~/.local/bin/
-#export PATH=$PATH:/opt/homebrew/Cellar/john-jumbo/1.9.0_1/share/john
-#export PATH=$PATH:/opt/homebrew/opt/ccache/libexec
-#export PATH=$PATH:/Applications/aspectj/bin/
-#export PATH=$PATH:~/.local/bin
-#export PATH=$PATH:~/.venv/bin/
-#export GOPATH=/usr/local/go
-#export PATH=$PATH:/usr/local/go/bin
-#export JAVA_HOME="/Users/deluxe/Library/Java/JavaVirtualMachines/openjdk-21/Contents/Home"
-#export LANG="en_US.UTF-8"
-
 typeset -U path PATH
 
 path=(
@@ -43,7 +30,6 @@ export CLASSPATH=$CLASSPATH:/Applications/aspectj/lib/*
 precmd() { vcs_info }
 
 setopt PROMPT_SUBST
-#PROMPT='%F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
 autoload -Uz add-zsh-hook vcs_info
 
 # Run the `vcs_info` hook to grab git info before displaying the prompt
@@ -130,15 +116,8 @@ for f in /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
   [ -f "$f" ] && source "$f" && break
 done
 unset f
-# python env with pacages
-#source ~/.venv/bin/activate
 
-# Start tmux
-#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#  exec tmux
-#fi
-
-# persitent tmux session on startup if not open already
+# persistent tmux session on startup if not open already
 if [[ -o interactive ]] && command -v tmux >/dev/null 2>&1 && [[ -z "$TMUX" ]]; then
   # main already open in a terminal window: a second window would only mirror it,
   # so it gets its own session (prefix w switches between them)
@@ -150,13 +129,13 @@ fi
 fpath=("$HOME/.docker/completions" $fpath)
 autoload -Uz compinit
 compinit -d ~/.zcompdump
-#
+# End of Docker CLI completions
+
 # AWS: no default profile, so nothing deploys as admin by accident.
 # Pick one per shell: `assume <profile>` (granted) or `export AWS_PROFILE=<profile>`.
 # SSO profiles: `aws sso login --profile <profile>` once per session.
 alias assume="source assume" # granted needs to run in this shell to set the env
-#
-# End of Docker CLI completions
+
 export PATH="$HOME/bin:$PATH"
 
 # fzf: fd for file lists (respects .gitignore, shows dotfiles), bat preview, Tokyo Night colors
@@ -170,7 +149,6 @@ source <(fzf --zsh)
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 export GH_PACKAGES_TOKEN="$(gh auth token)"
-export PATH="$PATH:$HOME/.local/bin"
 export JAVA_HOME=$(/usr/libexec/java_home -v 21)
 export AWS_REGION=eu-central-1
 
