@@ -149,7 +149,6 @@ source <(fzf --zsh)
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 export GH_PACKAGES_TOKEN="$(gh auth token)"
-export JAVA_HOME=$(/usr/libexec/java_home -v 21)
 export AWS_REGION=eu-central-1
 
 # machine-local secrets (not in the repo), e.g. MCP_API_KEY
