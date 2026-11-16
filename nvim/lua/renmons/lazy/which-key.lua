@@ -1,42 +1,42 @@
 return {
-  "folke/which-key.nvim",
-  event = "VeryLazy",
-  dependencies = { { "nvim-mini/mini.icons", opts = {} } }, -- which-key's preferred icon source
+	"folke/which-key.nvim",
+	event = "VeryLazy",
+	dependencies = { { "nvim-mini/mini.icons", opts = {} } }, -- which-key's preferred icon source
 
-  opts = {
-    preset = "modern",
+	opts = {
+		preset = "modern",
 
-    keys = {
-      scroll_down = "<c-j>",
-      scroll_up = "<c-k>",
-    },
+		keys = {
+			scroll_down = "<c-j>",
+			scroll_up = "<c-k>",
+		},
 
-    spec = {
-      { "<leader>b", group = "buffers" },
-      { "<leader>c", group = "code" },
-      { "<leader>d", "<Nop>", group = "debug" }, -- <Nop>: a mistyped <leader>d... must not run as a delete
-      { "<leader>f", group = "find" },
-      { "<leader>g", group = "git" },
-      { "<leader>j", group = "java" },
-      { "<leader>n", group = "notes / tree / search" },
-      { "<leader>q", group = "sessions" },
-      { "<leader>s", group = "splits" },
-      { "<leader>t", group = "tabs / today" },
-      { "<leader>T", group = "tests" },
-      { "<leader>u", group = "ui toggles" },
-      { "<leader>v", group = "vimtex" },
-      { "<leader>x", group = "problems / diagnostics" },
-      { "<leader>z", group = "spelling" },
-    },
-  },
+		spec = {
+			{ "<leader>b", group = "buffers" },
+			{ "<leader>c", group = "code" },
+			{ "<leader>d", "<Nop>", group = "debug" }, -- <Nop>: a mistyped <leader>d... must not run as a delete
+			{ "<leader>f", group = "find" },
+			{ "<leader>g", group = "git" },
+			{ "<leader>j", group = "java" },
+			{ "<leader>n", group = "notes / tree / search" },
+			{ "<leader>q", group = "sessions" },
+			{ "<leader>s", group = "splits" },
+			{ "<leader>t", group = "tabs / today" },
+			{ "<leader>T", group = "tests" },
+			{ "<leader>u", group = "ui toggles" },
+			{ "<leader>v", group = "vimtex" },
+			{ "<leader>x", group = "problems / diagnostics" },
+			{ "<leader>z", group = "spelling" },
+		},
+	},
 
-  keys = {
-    {
-      "<leader>?",
-      function()
-        require("which-key").show({ global = false })
-      end,
-      desc = "Show buffer-local keymaps",
-    },
-  },
+	keys = {
+		{
+			"<leader>?",
+			function()
+				require("which-key").show({ global = false })
+			end,
+			desc = "Show buffer-local keymaps",
+		},
+	},
 }

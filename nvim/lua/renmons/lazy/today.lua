@@ -1,7 +1,7 @@
 return {
-  "VVoruganti/today.nvim",
-  cmd = { "Today" },
-  opts = {
-    local_root = vim.fn.expand("~/Documents/jornal"), -- existing notes live here
-  },
+	"VVoruganti/today.nvim",
+	cmd = { "Today" },
+	opts = {
+		local_root = vim.fn.expand("~/Documents/jornal"), -- existing notes live here
+	},
 }

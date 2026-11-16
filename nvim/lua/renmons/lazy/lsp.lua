@@ -69,8 +69,19 @@ return {
 				table.insert(cfn_tags, "!" .. tag)
 			end
 			for _, tag in ipairs({
-				"Sub", "GetAtt", "Join", "If", "Equals", "Select", "Split",
-				"FindInMap", "Cidr", "And", "Or", "Not", "Transform",
+				"Sub",
+				"GetAtt",
+				"Join",
+				"If",
+				"Equals",
+				"Select",
+				"Split",
+				"FindInMap",
+				"Cidr",
+				"And",
+				"Or",
+				"Not",
+				"Transform",
 			}) do
 				table.insert(cfn_tags, "!" .. tag)
 				table.insert(cfn_tags, "!" .. tag .. " sequence")

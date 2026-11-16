@@ -20,12 +20,26 @@ return {
 		opts = {
 			ensure_installed = {
 				-- language servers (lspconfig names)
-				"lua_ls", "pyright", "vtsls", "eslint", "jsonls", "yamlls",
-				"rust_analyzer", "clangd", "graphql",
+				"lua_ls",
+				"pyright",
+				"vtsls",
+				"eslint",
+				"jsonls",
+				"yamlls",
+				"rust_analyzer",
+				"clangd",
+				"graphql",
 				-- formatters, linters, debuggers
-				"stylua", "shfmt", "ruff", "prettierd",
-				"jdtls", "java-debug-adapter", "java-test", -- java.lua (nvim-jdtls)
-				"js-debug-adapter", "debugpy", "codelldb", -- dap.lua
+				"stylua",
+				"shfmt",
+				"ruff",
+				"prettierd",
+				"jdtls",
+				"java-debug-adapter",
+				"java-test", -- java.lua (nvim-jdtls)
+				"js-debug-adapter",
+				"debugpy",
+				"codelldb", -- dap.lua
 			},
 			run_on_start = true,
 		},
