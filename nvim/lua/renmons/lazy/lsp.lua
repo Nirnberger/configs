@@ -77,7 +77,12 @@ return {
 				table.insert(cfn_tags, "!" .. tag .. " mapping")
 			end
 
+			-- lspconfig also lists filetypes nvim never sets (c.doxygen, yaml.gitlab, ...),
+			-- which :checkhealth vim.lsp reports as unknown
+			vim.lsp.config("clangd", { filetypes = { "c", "cpp", "objc", "objcpp", "cuda" } })
+
 			vim.lsp.config("yamlls", {
+				filetypes = { "yaml" },
 				settings = {
 					yaml = {
 						schemaStore = { enable = false, url = "" }, -- SchemaStore.nvim provides them

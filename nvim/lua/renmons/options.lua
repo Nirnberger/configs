@@ -53,6 +53,7 @@ vim.opt.confirm = true -- ask instead of failing on :q with unsaved changes
 -- no plugins need these hosts; silences their :checkhealth warnings
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0 -- inkmath runs its own node worker, no provider needed
 vim.g.loaded_python3_provider = 0
 
 vim.opt.autoread = true

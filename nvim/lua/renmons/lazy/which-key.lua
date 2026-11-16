@@ -13,7 +13,7 @@ return {
     spec = {
       { "<leader>b", group = "buffers" },
       { "<leader>c", group = "code" },
-      { "<leader>d", group = "debug" },
+      { "<leader>d", "<Nop>", group = "debug" }, -- <Nop>: a mistyped <leader>d... must not run as a delete
       { "<leader>f", group = "find" },
       { "<leader>g", group = "git" },
       { "<leader>j", group = "java" },
