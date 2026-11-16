@@ -155,6 +155,7 @@ Vitest, Jest, pytest. Java uses `<leader>jt` / `jT`.
 | Key | What |
 | --- | --- |
 | `<leader>uw` / `uc` / `us` | Toggle wrap / conceal / spell check |
+| `<leader>um` | Math as images in `.tex` and Markdown on / off (inkmath, needs Ghostty or kitty) |
 | `<leader>zz` | Fix spelling mistakes one by one |
 | `<leader>zn` / `zp` | Next / previous spelling mistake |
 | `<leader>zs` / `zg` / `zw` | Suggestions / add word / mark word wrong |
