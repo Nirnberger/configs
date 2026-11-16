@@ -20,6 +20,75 @@ local function bundles()
   return jars
 end
 
+-- testrunner repos ship run-policy-tests.sh (handles AWS login/credentials itself); output stays in a terminal split
+local last_run
+
+local function start_terminal(run)
+  last_run = run
+  vim.cmd("botright 20new")
+  vim.fn.termopen({ "bash", "run-policy-tests.sh", run.target }, { cwd = run.root, env = run.env })
+  vim.cmd("startinsert")
+end
+
+local function run_script(buf, with_method, env)
+  local root = vim.fs.root(buf, { "run-policy-tests.sh" })
+  if not root then
+    vim.notify("run-policy-tests.sh not found in a parent directory", vim.log.levels.WARN)
+    return
+  end
+  local target = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":t:r")
+  if with_method then
+    local lines = vim.api.nvim_buf_get_lines(buf, 0, vim.api.nvim_win_get_cursor(0)[1], false)
+    for i = #lines, 1, -1 do
+      local name = lines[i]:match("void%s+([%w_]+)%s*%(")
+      if name then
+        target = target .. "#" .. name
+        break
+      end
+    end
+  end
+  start_terminal({ root = root, target = target, env = env })
+end
+
+local function rerun_last()
+  if last_run then
+    start_terminal(last_run)
+  else
+    vim.notify("No testrunner run yet", vim.log.levels.INFO)
+  end
+end
+
+-- failed tests of the last run (run.failures, written by the script) -> quickfix list
+local function failures_to_quickfix()
+  local root = (last_run and last_run.root) or vim.fs.root(0, { "run-policy-tests.sh" })
+  local file = root and (root .. "/run.failures")
+  if not file or vim.fn.filereadable(file) == 0 then
+    vim.notify("No run.failures found, run the tests first", vim.log.levels.WARN)
+    return
+  end
+  local items = {}
+  for _, line in ipairs(vim.fn.readfile(file)) do
+    local class, method, name = unpack(vim.split(line, "\t", { plain = true }))
+    local path = root .. "/src/main/java/" .. class:gsub("%.", "/") .. ".java"
+    local lnum = 1
+    if vim.fn.filereadable(path) == 1 then
+      for i, l in ipairs(vim.fn.readfile(path)) do
+        if l:match("void%s+" .. method .. "%s*%(") then
+          lnum = i
+          break
+        end
+      end
+    end
+    table.insert(items, { filename = path, lnum = lnum, text = (name or method) })
+  end
+  if #items == 0 then
+    vim.notify("Last run had no failures", vim.log.levels.INFO)
+    return
+  end
+  vim.fn.setqflist({}, " ", { title = "Testrunner failures", items = items })
+  vim.cmd("copen")
+end
+
 local function on_attach(_, buf)
   local jdtls = require("jdtls")
   local map = function(mode, keys, func, desc)
@@ -32,6 +101,12 @@ local function on_attach(_, buf)
   map("v", "<leader>jm", function() jdtls.extract_method(true) end, "Extract method")
   map("n", "<leader>jt", jdtls.test_nearest_method, "Test nearest method")
   map("n", "<leader>jT", jdtls.test_class, "Test class")
+  map("n", "<leader>jr", function() run_script(buf, true) end, "Testrunner script: method (GIT)")
+  map("n", "<leader>jR", function() run_script(buf, false) end, "Testrunner script: class (GIT)")
+  map("n", "<leader>jl", function() run_script(buf, true, { POLICY_LOCAL = "1" }) end, "Testrunner script: method (localhost)")
+  map("n", "<leader>jL", function() run_script(buf, false, { POLICY_LOCAL = "1" }) end, "Testrunner script: class (localhost)")
+  map("n", "<leader>jj", rerun_last, "Testrunner script: repeat last run")
+  map("n", "<leader>je", failures_to_quickfix, "Testrunner script: failed tests to quickfix")
   map("n", "<leader>ju", "<cmd>JdtUpdateConfig<cr>", "Reload pom.xml / build.gradle")
 end
 

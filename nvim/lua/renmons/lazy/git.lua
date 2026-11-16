@@ -25,6 +25,7 @@ return {
         map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, "Blame line")
         map("n", "<leader>gB", gs.toggle_current_line_blame, "Toggle inline blame")
         map("n", "<leader>gd", gs.diffthis, "Diff against index")
+        map("n", "<leader>gD", function() gs.diffthis("HEAD~1") end, "Diff against last commit")
       end,
     },
   },

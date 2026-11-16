@@ -9,7 +9,12 @@ return {
 		{ "<leader>nt", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file tree" },
 	},
 	opts = {
-		view = { width = 30 },
+		-- ~15% of the window width, at least 30 columns (laptop keeps 30, ultrawide grows)
+		view = {
+			width = function()
+				return math.max(30, math.floor(vim.o.columns * 0.15))
+			end,
+		},
 		sort = { sorter = "name", folders_first = true },
 		update_focused_file = { enable = true }, -- was chadtree `follow`
 		git = { enable = true },
