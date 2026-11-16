@@ -162,6 +162,15 @@ local function start()
 		cmd = {
 			mason .. "/bin/jdtls",
 			"--jvm-arg=-javaagent:" .. mason .. "/packages/jdtls/lombok.jar",
+			-- GC tuning from vscode-java: less time in garbage collection while indexing big projects
+			"--jvm-arg=-XX:+UseParallelGC",
+			"--jvm-arg=-XX:GCTimeRatio=4",
+			"--jvm-arg=-XX:AdaptiveSizePolicyWeight=90",
+			"--jvm-arg=-Dsun.zip.disableMemoryMapping=true",
+			"--jvm-arg=-Xmx4G",
+			-- .project, .classpath, .settings/ and .factorypath go into the workspace (-data below),
+			-- not into the project where they would show up in git (a system property, like vscode-java)
+			"--jvm-arg=-Djava.import.generatesMetadataFilesAtProjectRoot=false",
 			"-data",
 			workspace,
 		},

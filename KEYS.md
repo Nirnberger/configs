@@ -138,6 +138,10 @@ Vitest, Jest, pytest. Java uses `<leader>jt` / `jT`.
 
 ### Java (`<leader>j`, only in `.java` files)
 
+jdtls keeps `.project`, `.classpath`, `.settings/` and `.factorypath` in its own cache, not in the
+project. Files an older setup left in a project can be deleted; the global git ignore
+(`git/ignore`) hides them anyway.
+
 | Key | What |
 | --- | --- |
 | `<leader>jo` | Organize imports |
