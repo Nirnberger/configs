@@ -159,6 +159,13 @@ alias assume="source assume" # granted needs to run in this shell to set the env
 # End of Docker CLI completions
 export PATH="$HOME/bin:$PATH"
 
+# fzf: fd for file lists (respects .gitignore, shows dotfiles), bat preview, Tokyo Night colors
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type d --hidden --exclude .git'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --color=bg+:#292e42,fg+:#c0caf5,hl:#7aa2f7,hl+:#7dcfff,pointer:#ff9e64,prompt:#7aa2f7,info:#565f89'
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:200 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree -L2 --color=always {}'"
 source <(fzf --zsh)
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 

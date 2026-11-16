@@ -1,0 +1,62 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Same layout as the old zsh prompt: status dot + 2 dirs on the left,
+# AWS profile + git on the right.
+add_newline = false
+command_timeout = 500
+
+format = "$status$directory$character"
+right_format = "${custom.aws_prod}${custom.aws_other}$git_branch$git_status$java$cmd_duration"
+
+[status]
+disabled = false
+format = "$symbol "
+symbol = "[⏺](red)"
+success_symbol = "[⏺](blue)"
+map_symbol = false
+
+[character]
+success_symbol = "[>](white)"
+error_symbol = "[>](white)"
+
+[directory]
+truncation_length = 2
+truncate_to_repo = false
+style = "blue"
+format = "[$path]($style) "
+
+[git_branch]
+symbol = "⎇ "
+format = "[$symbol$branch]($style) "
+style = "purple"
+
+[git_status]
+format = "[$all_status$ahead_behind]($style) "
+style = "red"
+
+[java]
+format = "[☕ $version]($style) "
+style = "yellow"
+detect_files = ["pom.xml", "build.gradle"]
+detect_extensions = []
+
+[cmd_duration]
+min_time = 3000
+format = "[⏱ $duration]($style) "
+style = "bright-black"
+
+[custom.aws_prod]
+when = 'echo "${AWS_PROFILE:-$AWS_VAULT}" | grep -Eq "prod|admin"'
+command = 'echo "${AWS_PROFILE:-$AWS_VAULT}"'
+symbol = "☁ "
+format = "[$symbol$output]($style) "
+style = "red"
+shell = ["bash", "--noprofile", "--norc"]
+
+[custom.aws_other]
+when = 'p="${AWS_PROFILE:-$AWS_VAULT}"; [ -n "$p" ] && ! echo "$p" | grep -Eq "prod|admin"'
+command = 'echo "${AWS_PROFILE:-$AWS_VAULT}"'
+symbol = "☁ "
+format = "[$symbol$output]($style) "
+style = "yellow"
+shell = ["bash", "--noprofile", "--norc"]
