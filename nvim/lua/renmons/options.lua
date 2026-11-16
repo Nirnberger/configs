@@ -5,10 +5,10 @@ vim.g.maplocalleader = ","
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
+vim.opt.tabstop = 2 -- ein Tab wird 2 Spalten breit angezeigt (z.B. 4, wenn du breiter magst)
+vim.opt.softtabstop = 0 -- aus, damit <Tab>/<BS> echte Tabs einfügen und löschen
+vim.opt.shiftwidth = 0 -- 0 = nimm den Wert von tabstop (für >>, <<, = usw.)
+vim.opt.expandtab = false -- Tabs bleiben Tabs
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
@@ -54,3 +54,5 @@ vim.opt.confirm = true -- ask instead of failing on :q with unsaved changes
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python3_provider = 0
+
+vim.opt.autoread = true
