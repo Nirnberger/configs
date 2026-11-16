@@ -86,6 +86,7 @@ A *hunk* is one block of changed lines; the coloured bar in the left column mark
 | `<leader>gS` / `gR` | Stage / undo the whole file |
 | `<leader>gb` / `gB` | Blame this line / blame inline for every line |
 | `<leader>gd` | Diff against the staged version |
+| `<leader>gD` | Diff against the last commit (`HEAD~1`) |
 | `<leader>gl` / `gf` | lazygit log / lazygit for this file's repo |
 
 ### Debug (`<leader>d`)
@@ -130,6 +131,10 @@ Vitest, Jest, pytest. Java uses `<leader>jt` / `jT`.
 | `<leader>jm` (visual) | Extract method |
 | `<leader>jt` / `jT` | Test method / class |
 | `<leader>ju` | Reload after editing `pom.xml` / `build.gradle` |
+| `<leader>jr` / `jR` | Testrunner script (`run-policy-tests.sh`): method / class, against GIT |
+| `<leader>jl` / `jL` | Same, against localhost (`POLICY_LOCAL=1`) |
+| `<leader>jj` | Repeat the last testrunner run |
+| `<leader>je` | Failed tests of the last run to the quickfix list |
 
 ### Toggles, spelling, notes
 
@@ -167,8 +172,10 @@ Prefix is `Ctrl Space`: press it, let go, then the key.
 | `prefix x` | Close pane |
 | `prefix h/j/k/l` | Go to pane (or `Ctrl h/j/k/l` without the prefix) |
 | `prefix H/J/K/L` | Resize pane (hold and repeat) |
+| `prefix <` / `>` | Resize left / right (in nvim: resizes the nvim split, like `Ctrl w <` / `>`) |
 | `prefix z` | Zoom pane to full size and back |
 | `prefix s` | Move pane to its own window |
+| `prefix S` / `B` | Send this pane to another window / bring a pane from another window (enter the number) |
 | `prefix f` | **Project switcher**: running sessions + your projects. Opens nvim + a shell window |
 | `prefix F` | Add the current folder (its git repo) as a project |
 | `prefix D` | Dev boxes: go to the `boxes` session and pick a box; each box gets its own window |
